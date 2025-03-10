@@ -14,7 +14,7 @@ namespace Assignment.Controllers
         {
             if (reverseWord == null)
             {
-                return BadRequest();
+                return BadRequest("Enter a valid word");
             }
 
             string[] words = reverseWord.Word.Split(' ');
