@@ -1,5 +1,7 @@
 using System.Text;
 using Assignment.Data;
+using Assignment.Services;
+using Assignment.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -29,7 +31,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 ); 
 
-
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 var app = builder.Build();
@@ -39,10 +41,11 @@ if (app.Environment.IsDevelopment())
 {
 
     app.MapOpenApi();
+    app.MapScalarApiReference();
     
 }
 
-app.MapScalarApiReference();
+
 
 app.UseHttpsRedirection();
 

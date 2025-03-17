@@ -52,7 +52,7 @@ namespace Assignment.Services
             var hashedPassword = new PasswordHasher<User>().HashPassword(user, request.Password); 
 
             user.Email = request.Email;
-            user.PasswordHash = request.Password;
+            user.PasswordHash = hashedPassword;
 
             context.User.Add(user); 
             await context.SaveChangesAsync(); 
